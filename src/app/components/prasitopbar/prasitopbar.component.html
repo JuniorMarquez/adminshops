@@ -1,0 +1,142 @@
+<header class="header header-offcanvas-about header-sticky">
+	<div class="header-bottom pt-md-40 pb-md-40 pt-sm-40 pb-sm-40">
+		<div class="container wide">
+			<div class="header-bottom-container">
+				<div class="logo-with-offcanvas d-flex">
+					<div class="offcanvas-about-icon mr-20 d-none d-lg-block" *ngIf="!this._uw.admin">
+						<a href="javascript:void(0)" id="offcanvas-about-icon">
+							<i class="ion-navicon"></i>
+						</a>
+					</div>
+					<div class="logo">
+						<a routerLink="">
+							<img src="assets/assetsprasi/images/logo.png" class="img-fluid" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="header-bottom-navigation">
+						<div class="site-main-nav d-none d-lg-block">
+							<nav class="site-nav center-menu">
+								<ul>
+							<li class="menu-item-has-children"  [hidden]="this._uw.admin">
+								<a >Tienda</a>
+								<ul class="sub-menu single-column-menu">
+                                    <li><a routerLink="/prasifilter/Botas y botines">Botas y Botines</a></li>
+                                    <li><a routerLink="/prasifilter/Zapatos">Zapatos</a></li>
+                                    <li><a routerLink="/prasifilter/Moccs">Moccs</a></li>
+                                </ul>
+                            </li>
+                            <li  [hidden]="!this._uw.admin">
+								<a routerLink="/prasifilter/Botas y botines">Mis productos (<span class="count">{{_uw.totalTixs}}</span>) </a>
+                            </li>
+                            <li class="menu-item-has-children" [hidden]="!this._uw.admin"><a href="javascript:void(0)"><i class="fa fa-exclamation-circle" style="color: #d3122a;"></i>
+						<span class="count"></span> 
+						Ventas</a>
+                                <ul class="sub-menu single-column-menu">
+                                	
+                                    <li><a routerLink="">Hisorial de ventas</a></li>
+                                    <li><a ></a></li>
+                                    <li><a routerLink="">Devoluciones</a></li>
+                                </ul>
+                            </li>
+							<li class="menu-item-has-children" [hidden]="this._uw.admin"><a href="javascript:void(0)">Prasi</a>
+                                <ul class="sub-menu single-column-menu">
+                                    <li><a routerLink="prasiabout">Quienes somos</a></li>
+                                    <li><a >Tabla de tallas</a></li>
+                                    <li><a routerLink="prasidevoluciones">Devoluciones</a></li>
+                                </ul>
+                            </li>
+							<li ><a routerLink="prasicontact"  [hidden]="this._uw.admin">Contactanos</a></li>
+						</ul>
+							</nav>
+						</div>
+				</div>
+				<div class="header-right-container">
+					<div class="header-right-icons d-flex justify-content-end align-items-center h-100">
+						<div class="single-icon user-login"[hidden]="!this._uw.isLogged">
+							<a routerLink="mytixs" data-tippy-theme = "sharpborder" data-tippy="Inicio" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true">
+								<i class="ion-home"></i>
+							</a>
+						</div>
+						<div class="single-icon user-login" [hidden]="!this._uw.isLogged">
+							<a routerLink="addtixs"data-tippy-theme = "sharpborder" data-tippy="Agregar producto" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true">
+								<i class="ion-plus" style="color: #d3122a; "></i>
+							</a>
+						</div>
+						<div class="single-icon user-login" [hidden]="!this._uw.isLogged || !this._uw.editingTrek">
+							<a routerLink="prasidiscount"data-tippy-theme = "sharpborder" data-tippy="Aplicar descuento" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true">
+								<i class="fa fa-tag" style="color: #d3122a;"></i>
+							</a>
+						</div>
+						<div class="single-icon wishlist" [hidden]="!this._uw.editingTrek">
+							<a href="javascript:void(0)" id="offcanvas-wishlist-icon" data-tippy-theme = "sharpborder" data-tippy="Borrar producto" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true">
+								<i class="fa fa-trash" style="color: #d3122a;"></i>
+							</a>
+						</div>
+						<div class="single-icon search">
+							<a href="javascript:void(0)" id="search-icon"  >
+								<i class="ion-ios-search-strong"></i>
+							</a>
+						</div>
+						<div class="single-icon user-login" [hidden]="!this._uw.isLogged">
+							<a (click)="onLogout()" data-tippy-theme = "sharpborder" data-tippy="Cerrar session" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true">
+								<i class="fa fa-power-off"></i>
+							</a>
+						</div>
+						<div class="single-icon cart" [hidden]="_uw.numProd<1 || this._uw.admin">
+							<a href="javascript:void(0)" id="offcanvas-cart-icon">
+								<i class="ion-ios-cart"></i>
+								<span class="count">{{_uw.numProd}}</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="site-mobile-navigation d-block d-lg-none">
+				<div id="dl-menu" class="dl-menuwrapper site-mobile-nav">
+					<button class="dl-trigger hamburger hamburger--spin">
+						<span class="hamburger-box">
+							<span class="hamburger-inner"></span>
+						</span>
+					</button>
+					<ul class="dl-menu dl-menu-toggle" [hidden]="this._uw.admin">
+						<li><a >Tienda</a>
+							<ul class="dl-submenu">
+								<li class="dl-back"><a >Atrás</a></li>
+								<li><a routerLink="/prasifilter/Botas y botines">Botas y Botines</a></li>
+                                <li><a routerLink="/prasifilter/Zapatos">Zapatos</a></li>
+                                <li><a routerLink="/prasifilter/Moccs">Moccs</a></li>
+							</ul>
+						</li>
+						<li><a >Prasi</a>
+							<ul class="dl-submenu" >
+								<li class="dl-back"><a >Atrás</a></li>
+								 <li><a routerLink="prasiabout">Quienes somos</a></li>
+                                <li><a >Tabla de tallas</a></li>
+                                <li><a routerLink="prasidevoluciones">Devoluciones</a></li>
+							</ul>
+						</li>
+						<li><a routerLink="prasicontact" >Contactanos</a></li>
+					</ul>
+
+					<ul class="dl-menu dl-menu-toggle"  [hidden]="!this._uw.admin">
+						<li  *ngIf="this._uw.admin">
+							<a routerLink="/prasifilter/Botas y botines">Mis productos (<span class="count">{{_uw.totalTixs}}</span>) </a>
+                        </li>
+						 <li class="menu-item-has-children" >
+						 	<a href="javascript:void(0)">
+						 		<i class="fa fa-exclamation-circle" style="color: #d3122a;"></i>
+								<span class="count"></span> 
+								Ventas
+							</a>
+                            <ul class="sub-menu single-column-menu">
+                                <li><a routerLink="">Hisorial de ventas</a></li>
+                                <li><a routerLink="">Devoluciones</a></li>
+                            </ul>
+                        </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
